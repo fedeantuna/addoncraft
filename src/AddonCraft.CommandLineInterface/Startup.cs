@@ -14,16 +14,14 @@ namespace AddonCraft.CommandLineInterface
     [ExcludeFromCodeCoverage]
     public static class Startup
     {
-        // private const String _connectionStringName = "Default";
-        private const String AppSettingsFile = "appsettings.json";
-
         public static IServiceCollection ConfigureServices()
         {
             var services = new ServiceCollection();
 
+            const String appSettingsFile = "appsettings.json";
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(AppSettingsFile, optional: false, reloadOnChange: false);
+                .AddJsonFile(appSettingsFile, optional: false, reloadOnChange: false);
             var configuration = (IConfiguration)builder.Build();
 
             services.AddApplication();

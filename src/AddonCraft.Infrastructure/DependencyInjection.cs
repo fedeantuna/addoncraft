@@ -14,12 +14,9 @@ namespace AddonCraft.Infrastructure
     [ExcludeFromCodeCoverage]
     public static class DependencyInjection
     {
-        private const String StartupProjectAssemblyName = "AddonCraft.CommandLineInterface";
-
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(configuration.GetConnectionString("DefaultConnection"),
-                soa => soa.MigrationsAssembly(StartupProjectAssemblyName)));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IApplicationDbContext>(sp => sp.GetService<ApplicationDbContext>());
 
