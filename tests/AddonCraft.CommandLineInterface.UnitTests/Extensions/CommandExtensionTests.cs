@@ -1,11 +1,13 @@
 using System;
 using System.CommandLine;
+using System.Diagnostics.CodeAnalysis;
 using AddonCraft.CommandLineInterface.Exceptions;
 using AddonCraft.CommandLineInterface.Extensions;
 using Xunit;
 
 namespace AddonCraft.CommandLineInterface.UnitTests.Extensions
 {
+    [ExcludeFromCodeCoverage]
     public class CommandExtensionTests
     {
         [Fact]
