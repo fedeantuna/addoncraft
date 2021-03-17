@@ -1,6 +1,10 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using AddonCraft.Application;
+using AddonCraft.Infrastructure;
+using AddonCraft.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,6 +25,9 @@ namespace AddonCraft.CommandLineInterface
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile(AppSettingsFile, optional: false, reloadOnChange: false);
             var configuration = (IConfiguration)builder.Build();
+
+            services.AddApplication();
+            services.AddInfrastructure(configuration);
 
             services.AddSingleton(configuration);
 
